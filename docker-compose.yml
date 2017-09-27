@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: dev.Dockerfile
+    command: rails s -b 0.0.0.0 -p 3000
+    ports:
+      - 3000:3000
+    volumes:
+      - ./backend/src:/usr/src/app
+    depends_on:
+      - database
+  database:
+    image: postgres
