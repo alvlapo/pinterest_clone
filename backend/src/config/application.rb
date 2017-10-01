@@ -22,6 +22,10 @@ module App
     config.load_defaults 5.1
     config.api_only = true
 
+    config.to_prepare do
+      DeviseController.respond_to :json
+    end
+
     config.generators do |g|
       g.test_framework :rspec, fixture: true
       g.fixture_replacement :factory_girl, dir: 'spec/factories'
